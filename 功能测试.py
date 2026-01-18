@@ -1,15 +1,15 @@
 from ultralytics import YOLO
 import os
 
-# ¼ÓÔØYOLOÄ£ĞÍ
+# åŠ è½½YOLOæ¨¡å‹
 def load_model(model_path):
     return YOLO(model_path)
 
-# »ñÈ¡valÄ¿Â¼ÏÂµÄËùÓĞÍ¼Ïñ
+# è·å–valç›®å½•ä¸‹çš„æ‰€æœ‰å›¾åƒ
 def get_val_images(val_dir):
     return [os.path.join(val_dir, file) for file in os.listdir(val_dir) if file.endswith('.jpg')]
 
-# ¶Ôµ¥¸öÍ¼Ïñ½øĞĞÍÆÀí
+# å¯¹å•ä¸ªå›¾åƒè¿›è¡Œæ¨ç†
 def detect_image(model, image_path):
     results = model.predict(
         source=image_path,
@@ -28,23 +28,23 @@ def detect_image(model, image_path):
     
     return detections
 
-# Ö÷º¯Êı
+# ä¸»å‡½æ•°
 def main():
-    # ÅäÖÃ²ÎÊı
+    # é…ç½®å‚æ•°
     MODEL_PATH = 'runs/detect/train3/weights/best.pt'
     VAL_DIR = 'mnist_det/images/val'
     
-    # ¼ÓÔØÄ£ĞÍ
+    # åŠ è½½æ¨¡å‹
     model = load_model(MODEL_PATH)
     
-    # »ñÈ¡valÍ¼ÏñÁĞ±í
+    # è·å–valå›¾åƒåˆ—è¡¨
     val_images = get_val_images(VAL_DIR)
     
-    # ±éÀúËùÓĞÍ¼Ïñ½øĞĞ¼ì²â
+    # éå†æ‰€æœ‰å›¾åƒè¿›è¡Œæ£€æµ‹
     for image_path in val_images:
         detections = detect_image(model, image_path)
         
-        # Êä³ö½á¹û
+        # è¾“å‡ºç»“æœ
         image_name = os.path.basename(image_path)
         print(f"\n{image_name}")
         for det in detections:
