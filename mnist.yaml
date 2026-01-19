@@ -1,0 +1,5 @@
+train: /home/rex/fashion-mnist/yolo_file/mnist_det/images/train
+val: /home/rex/fashion-mnist/yolo_file/mnist_det/images/val
+
+nc: 10
+name: ["0","1","2","3","4","5","6","7","8","9"]
