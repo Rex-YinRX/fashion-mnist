@@ -1,2 +1,2 @@
 # fashion-mnist
-RoboMaster 算法组 作业
+RoboVigor 算法组 作业
